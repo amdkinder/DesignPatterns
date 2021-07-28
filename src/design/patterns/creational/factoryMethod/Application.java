@@ -1,9 +1,13 @@
 package design.patterns.creational.factoryMethod;
 
+import design.patterns.creational.factoryMethod.factory.Dialog;
+import design.patterns.creational.factoryMethod.factory.MacDialog;
+import design.patterns.creational.factoryMethod.factory.WinDialog;
+
 import java.util.Random;
 
 public class Application {
-    public static Creator creator;
+    public static Dialog dialog;
 
     static void initializeApp() {
         System.out.println("App is running...");
@@ -11,14 +15,14 @@ public class Application {
         int n = random.nextInt(2);
         System.out.println("n: " + n);
         if (n % 2 == 0) {
-            creator = new CreatorProductA();
+            dialog = new MacDialog();
         } else {
-            creator = new CreatorProductB();
+            dialog = new WinDialog();
         }
     }
 
     public static void main(String[] args) {
         initializeApp();
-        creator.render();
+        dialog.render();
     }
 }
